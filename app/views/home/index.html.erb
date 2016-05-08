@@ -1,0 +1,26 @@
+
+<br>
+
+<p id="home"> <%= "Welcome to the Blog of .... Nothing. YET" %></p>
+
+
+
+
+<h1><%= "Sign-Up Form" %></h1>
+  <div class="postform">
+  <%= form_for User.new do |f| %>
+    <%= f.label("Username") %> <br>
+    <%= f.text_field(:username) %> <br>
+    <%= f.label("First Name") %> <br>
+    <%= f.text_field(:fname) %> <br>
+    <%= f.label("Last Name") %> <br>
+    <%= f.text_field(:lname) %> <br>
+    <%= f.label("Email") %> <br>
+    <%= f.text_field(:email) %> <br>
+    <%= f.label("Password") %> <br>
+    <%= f.text_field(:password) %> <br>
+    <%= f.submit("Submit") %>
+  </div>
+<% end %>
+
+

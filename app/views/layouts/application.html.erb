@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NameLess Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+<body>
+		<%= flash[:notice] if flash[:notice] %> 
+	<%= flash[:alert] if flash[:alert] %>
+	
+	<% if !session[:user_id] %>
+<nav>
+		<div id="session-control">
+			<%= form_tag("/login", method: "post") do %>
+			  <%= label_tag(:email) %>
+			  <%= text_field_tag(:email) %>
+			  <%= label_tag(:password) %>
+			  <%= text_field_tag(:password) %>
+			  <%= submit_tag("Login") %>
+			<% end %>
+		</div>
+	</nav>
+
+	<% else %>
+	<nav>
+		<ul>
+			
+			<li><h3><%= link_to "Users", users_path %></h3></li>
+			<li><h3><%= link_to "Posts", posts_path %></h3></li>
+			<li><h3><%= link_to "Edit User", edit_user_path(current_user.id) %></h3></li>
+		</ul>
+		<%= form_tag("/logout", method: "delete") do %>
+				<%= submit_tag("Logout") %>
+		<% end %>
+		
+	<% end %>
+
+
+</nav>
+
+<%= yield %>
+
+</body>
+</html>

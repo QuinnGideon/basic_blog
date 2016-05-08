@@ -1,0 +1,22 @@
+<br>
+<h3>Username:</h3> <%= @user.username.capitalize %>
+
+<h3>Posts:</h3>
+
+    <% @posts.each do |p| %>
+    	<p> <%= p.body %> </p>
+    <% end %>
+
+<h3>Email:</h3>
+<%= @user.email %>
+<br>
+
+<%= link_to("Delete Profile", user_path(@user), method: :delete) %>
+<br>
+
+<br><br>
+
+
+<%= link_to "Edit", edit_user_path(@user) %>
+
+

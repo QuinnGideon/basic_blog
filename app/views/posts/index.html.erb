@@ -1,0 +1,21 @@
+	<h1><%= "All Posts Page" %></h1>
+
+<% if session[:user_id] %>
+<h3>New Post</h3>
+	<%= form_for Post.new do |f| %>   
+		<%=f.label "Write Posts" %>   
+		<%=f.text_field(:body) %>
+		<%= f.hidden_field(:user_id, value: session[:user_id]) %>
+		<%=f.submit "Submit" %> 
+	<% end %>
+<% end %>
+<br><br><br><br>
+
+<% @posts.each do |p| %>
+	<p id="mainposts">
+	<%= @users.find(p.user_id).fname.capitalize %>:
+	<%= link_to p.body.truncate(10), post_path(p) %>
+	<br>
+	<%= link_to("Delete Post", post_path(p), method: :delete) %></p>
+
+<% end %> 

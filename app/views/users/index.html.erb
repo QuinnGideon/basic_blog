@@ -1,0 +1,7 @@
+<h1><%= "All our current members" %></h1>
+
+<% @users.each do |user| %>
+	<%= link_to user.username.capitalize, user_path(user) %>
+	<br><br>
+
+<% end %>
